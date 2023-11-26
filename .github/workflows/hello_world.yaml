@@ -11,7 +11,11 @@ jobs:
   hellO: 
     runs-on: ubuntu-latest
     steps: 
-      - uses: actions/checkout@v2
-      - name: hello world
-        run: echo "hello world"
-        shell: bash
+        - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.13.x
+          cache: npm
+
+        - name: Install
+        run: npm ci
